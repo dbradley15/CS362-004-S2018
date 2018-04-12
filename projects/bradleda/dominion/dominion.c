@@ -1360,8 +1360,8 @@ void playGreatHall(int currentPlayer, struct gameState * state) {
 
 
 void playOutpost(int currentPlayer, struct gameState * state) {
-    
-    state->outpostPlayed++;
+    // BUG -- Outpost only discards cards. No action on outposts themselves occurs.
+    //state->outpostPlayed++;
     
     discardCard(handPos, currentPlayer, state, 0);
 }
