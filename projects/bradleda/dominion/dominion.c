@@ -667,7 +667,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-      playAdventurer(currentPlayer, temphand, state, z)
+      playAdventurer(currentPlayer, temphand, state, z);
       return 0;
 			
     case council_room:
@@ -812,11 +812,11 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case smithy:
-      playSmithy(currentPlayer, state);
+      playSmithy(currentPlayer, state, handPos);
       return 0;
 		
     case village:
-      playVillage(currentPlayer, game);
+      playVillage(currentPlayer, state, handPos);
       return 0;
 		
     case baron:
@@ -871,7 +871,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case great_hall:
-      playGreatHall(currentPlayer, state);
+      playGreatHall(currentPlayer, state, handPos);
       return 0;
 		
     case minion:
@@ -1118,7 +1118,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case outpost:
-      playOutpost(currentPlayer, state);
+      playOutpost(currentPlayer, state, handPos);
       return 0;
 		
     case salvager:
@@ -1286,13 +1286,13 @@ int updateCoins(int player, struct gameState *state, int bonus)
   return 0;
 }
 
-void playSmithy(int currentPlayer, struct gameState * state) {
+void playSmithy(int currentPlayer, struct gameState * state, int handPos) {
     
     int i = 3;
     
     // BUG -- Intended to countdown to 0, but will only add 1 card instead of 3
     for(i; i < 3; i--) {
-        drawCard(currentPlayer, state)
+        drawCard(currentPlayer, state);
     }
     
     discardCard(handPos, currentPlayer, state, 0);
@@ -1331,7 +1331,7 @@ void playAdventurer(int currentPlayer, int temphand[], struct gameState * state,
       }
 }
 
-void playVillage(int currentPlayer, struct gameState * game) {
+void playVillage(int currentPlayer, struct gameState * state, int handPos) {
     
     drawCard(currentPlayer, state);
     
@@ -1345,7 +1345,7 @@ void playVillage(int currentPlayer, struct gameState * game) {
 
 
 
-void playGreatHall(int currentPlayer, struct gameState * state) {
+void playGreatHall(int currentPlayer, struct gameState * state, int handPos) {
     
     drawCard(currentPlayer, state);
     
@@ -1359,7 +1359,7 @@ void playGreatHall(int currentPlayer, struct gameState * state) {
 
 
 
-void playOutpost(int currentPlayer, struct gameState * state) {
+void playOutpost(int currentPlayer, struct gameState * state, int handPos) {
     // BUG -- Outpost only discards cards. No action on outposts themselves occurs.
     //state->outpostPlayed++;
     
