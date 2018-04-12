@@ -1299,7 +1299,37 @@ void playSmithy(int currentPlayer, struct gameState * state) {
 }
 
 
+void playAdventurer(int currentPlayer, int temphand[], struct gameState * state, int z) {
+    
+    int drawnTreasure = 0;
+    int cardDrawn;
+    
 
+    while(drawntreasure < 2) {
+        // BUG -- Deck is shuffled one card too early as it never gets to empty
+    	if (state->deckCount[currentPlayer] <= 1) {//if the deck is empty we need to shuffle discard and add to deck
+    	    shuffle(currentPlayer, state);
+	    }
+	
+    	drawCard(currentPlayer, state);
+    	cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
+    	
+    	if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+    	  drawntreasure++;
+    	
+    	else {
+    	  temphand[z]=cardDrawn;
+    	  state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
+    	  z++;
+    	}
+	
+    }
+      
+    while(z-1 >= 0) {
+	    state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
+	    z = z - 1;
+      }
+}
 
 void playVillage(int currentPlayer, struct gameState * game) {
     
