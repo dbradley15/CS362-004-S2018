@@ -1305,7 +1305,7 @@ void playAdventurer(int currentPlayer, int temphand[], struct gameState * state,
     int cardDrawn;
     
 
-    while(drawntreasure < 2) {
+    while(drawnTreasure < 2) {
         // BUG -- Deck is shuffled one card too early as it never gets to empty
     	if (state->deckCount[currentPlayer] <= 1) {//if the deck is empty we need to shuffle discard and add to deck
     	    shuffle(currentPlayer, state);
@@ -1315,7 +1315,7 @@ void playAdventurer(int currentPlayer, int temphand[], struct gameState * state,
     	cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
     	
     	if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-    	  drawntreasure++;
+    	  drawnTreasure++;
     	
     	else {
     	  temphand[z]=cardDrawn;
