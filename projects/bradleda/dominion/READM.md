@@ -2,6 +2,7 @@ INSTRUCTIONS
 
 
 run make all #To compile the dominion code
+
 run make unittestresults.out # to create output file
 
 ***********************************************
