@@ -1,13 +1,11 @@
 INSTRUCTIONS
 
 
-run make all #To compile the dominion code
+run: make all #To compile the dominion code
 
-run make unittestresults.out # to create output file
+run: make randomtestadventurer.out # to create adventurer output file
+run: make randomtestcard1.out # to create smithy output file
+run: make randomtestcard2.out # to create village output file
 
-***********************************************
-I commented out the more verbose output file.
-Please remove the comment markers in Makefile that would allow dominion.c.gcov output to be 'cat' to the unittestresults.out file
-if you would like the verbose version.
 
 
